@@ -4,6 +4,7 @@ const items = [
   { to: "/", label: "WhatsApp" },
   { to: "/automacoes", label: "Automações" },
   { to: "/automacoes/leads", label: "Leads em Automação" },
+  { to: "/interesse", label: "Interesse" },
   { to: "/execucoes", label: "Execuções" },
   { to: "/respostas", label: "Respostas" },
   { to: "/configuracoes", label: "Configurações" },
