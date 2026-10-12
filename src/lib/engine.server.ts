@@ -143,6 +143,9 @@ const REPLY_DEBOUNCE_MS = 5000;
 export async function handleInboundReply(phone: string, content: string) {
   const db = getDb();
   const normalized = normalizePhone(phone);
+  // Score de interesse: agenda analise independente (nao afeta a resposta)
+  const { scheduleInterest } = await import("./interest.server");
+  await scheduleInterest(normalized);
   const { data: executions } = await db
     .from("automation_executions")
     .select("id, status")
@@ -622,5 +625,7 @@ export async function runDueExecutions(limit = 20) {
     }
   }
   const replies = await runPendingReplies().catch(() => 0);
-  return { due: dueFound, processed, replies };
+  const { runPendingInterest } = await import("./interest.server");
+  const interest = await runPendingInterest().catch(() => 0);
+  return { due: dueFound, processed, replies, interest };
 }
