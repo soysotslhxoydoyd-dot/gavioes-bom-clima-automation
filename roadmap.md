@@ -1,4 +1,6 @@
 # Roadmap
-- [x] Integração Evolution API (código, tela, webhook, arquivos de implantação)
-- [ ] Servidor Evolution API no ar — aguardando VPS/serviço do usuário
-- [ ] Teste real envio/recebimento/QR pela Evolution — depende do servidor
+- [x] Código importado do GitHub + banco criado
+- [x] Score Inteligente de Interesse (análise, histórico, tendência, lead quente, tela Interesse, testes)
+- [x] Agendador do motor (a cada minuto) — funciona após publicar
+- [ ] Token do Whapi (WHAPI_API_TOKEN) — aguardando usuário
+- [ ] Servidor Evolution API (opcional) — aguardando VPS do usuário
