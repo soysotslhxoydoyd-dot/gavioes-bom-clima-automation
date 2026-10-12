@@ -69,7 +69,7 @@ export function computeTrend(previous: number[], current: number, window = 3, mi
 /** Valida e normaliza a saida da IA. Retorna null se for invalida. */
 export function validateAnalysis(raw: unknown): Analysis | null {
   if (!raw || typeof raw !== "object") return null;
-  const r = raw as Record<string, unknown>;
+  const r = raw as { score?: unknown; intent?: unknown; objection?: unknown; reasons?: unknown };
   const n = Number(r.score);
   if (!Number.isFinite(n)) return null;
   const score = Math.min(100, Math.max(0, Math.round(n)));

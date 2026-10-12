@@ -31,7 +31,7 @@ describe("score de interesse", () => {
 
   it("sem motivos registra evidências insuficientes", () => {
     const a = validateAnalysis({ score: 10, intent: "INDEFINIDO", objection: "NENHUMA", reasons: [] })!;
-    expect(a.reasons[0].text).toMatch(/insuficientes/);
+    expect(a.reasons[0]?.text).toMatch(/insuficientes/);
   });
 
   it("desinteresse explicito pode derrubar o score; outros saltos são limitados", () => {
