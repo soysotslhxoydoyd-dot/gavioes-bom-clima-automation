@@ -320,18 +320,27 @@ export type Database = {
       }
       interest_settings: {
         Row: {
+          context_messages: number
           hot_threshold: number
           id: boolean
+          trend_min_delta: number
+          trend_window: number
           updated_at: string
         }
         Insert: {
+          context_messages?: number
           hot_threshold?: number
           id?: boolean
+          trend_min_delta?: number
+          trend_window?: number
           updated_at?: string
         }
         Update: {
+          context_messages?: number
           hot_threshold?: number
           id?: boolean
+          trend_min_delta?: number
+          trend_window?: number
           updated_at?: string
         }
         Relationships: []
@@ -339,12 +348,18 @@ export type Database = {
       lead_interest: {
         Row: {
           analyzed_at: string | null
+          chat_id: string | null
           hot: boolean
           intent: string
+          last_error: string | null
+          last_message_id: string | null
+          lead_id: string | null
           level: string
+          logic_version: string
           objection: string | null
           pending_at: string | null
           phone: string
+          previous_score: number | null
           reasons: Json
           score: number
           trend: string
@@ -352,12 +367,18 @@ export type Database = {
         }
         Insert: {
           analyzed_at?: string | null
+          chat_id?: string | null
           hot?: boolean
           intent?: string
+          last_error?: string | null
+          last_message_id?: string | null
+          lead_id?: string | null
           level?: string
+          logic_version?: string
           objection?: string | null
           pending_at?: string | null
           phone: string
+          previous_score?: number | null
           reasons?: Json
           score?: number
           trend?: string
@@ -365,12 +386,18 @@ export type Database = {
         }
         Update: {
           analyzed_at?: string | null
+          chat_id?: string | null
           hot?: boolean
           intent?: string
+          last_error?: string | null
+          last_message_id?: string | null
+          lead_id?: string | null
           level?: string
+          logic_version?: string
           objection?: string | null
           pending_at?: string | null
           phone?: string
+          previous_score?: number | null
           reasons?: Json
           score?: number
           trend?: string
@@ -381,36 +408,51 @@ export type Database = {
       lead_interest_history: {
         Row: {
           created_at: string
+          hot: boolean
           id: string
           intent: string
           level: string
+          logic_version: string
           objection: string | null
           phone: string
+          previous_score: number | null
           reason: string | null
+          reasons: Json
           score: number
           source_message_id: string | null
+          trend: string
         }
         Insert: {
           created_at?: string
+          hot?: boolean
           id?: string
           intent: string
           level: string
+          logic_version?: string
           objection?: string | null
           phone: string
+          previous_score?: number | null
           reason?: string | null
+          reasons?: Json
           score: number
           source_message_id?: string | null
+          trend?: string
         }
         Update: {
           created_at?: string
+          hot?: boolean
           id?: string
           intent?: string
           level?: string
+          logic_version?: string
           objection?: string | null
           phone?: string
+          previous_score?: number | null
           reason?: string | null
+          reasons?: Json
           score?: number
           source_message_id?: string | null
+          trend?: string
         }
         Relationships: []
       }
