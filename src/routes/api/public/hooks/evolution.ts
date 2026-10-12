@@ -69,6 +69,14 @@ export const Route = createFileRoute("/api/public/hooks/evolution")({
           await new Promise((r) => setTimeout(r, 5500));
           await runPendingReplies();
         }
+        // Score de interesse: roda depois da resposta, falhas nao afetam o atendimento
+        try {
+          if (!needsReply) await new Promise((r) => setTimeout(r, 3500));
+          const { runPendingInterest } = await import("@/lib/interest.server");
+          await runPendingInterest();
+        } catch (e) {
+          console.error("[INTEREST]", e);
+        }
         return Response.json({ ok: true });
       },
     },

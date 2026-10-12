@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AutomacoesRouteImport } from './routes/automacoes'
 import { Route as ConfiguracoesRouteImport } from './routes/configuracoes'
 import { Route as ExecucoesRouteImport } from './routes/execucoes'
+import { Route as InteresseRouteImport } from './routes/interesse'
 import { Route as RespostasRouteImport } from './routes/respostas'
 import { Route as AutomacoesLeadsRouteImport } from './routes/automacoes_.leads'
 import { Route as ApiPublicHooksAutomationTickRouteImport } from './routes/api/public/hooks/automation-tick'
@@ -37,6 +38,11 @@ const ConfiguracoesRoute = ConfiguracoesRouteImport.update({
 const ExecucoesRoute = ExecucoesRouteImport.update({
   id: '/execucoes',
   path: '/execucoes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InteresseRoute = InteresseRouteImport.update({
+  id: '/interesse',
+  path: '/interesse',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RespostasRoute = RespostasRouteImport.update({
@@ -71,6 +77,7 @@ export interface FileRoutesByFullPath {
   '/automacoes': typeof AutomacoesRoute
   '/configuracoes': typeof ConfiguracoesRoute
   '/execucoes': typeof ExecucoesRoute
+  '/interesse': typeof InteresseRoute
   '/respostas': typeof RespostasRoute
   '/automacoes/leads': typeof AutomacoesLeadsRoute
   '/api/public/hooks/automation-tick': typeof ApiPublicHooksAutomationTickRoute
@@ -82,6 +89,7 @@ export interface FileRoutesByTo {
   '/automacoes': typeof AutomacoesRoute
   '/configuracoes': typeof ConfiguracoesRoute
   '/execucoes': typeof ExecucoesRoute
+  '/interesse': typeof InteresseRoute
   '/respostas': typeof RespostasRoute
   '/automacoes/leads': typeof AutomacoesLeadsRoute
   '/api/public/hooks/automation-tick': typeof ApiPublicHooksAutomationTickRoute
@@ -94,6 +102,7 @@ export interface FileRoutesById {
   '/automacoes': typeof AutomacoesRoute
   '/configuracoes': typeof ConfiguracoesRoute
   '/execucoes': typeof ExecucoesRoute
+  '/interesse': typeof InteresseRoute
   '/respostas': typeof RespostasRoute
   '/automacoes_/leads': typeof AutomacoesLeadsRoute
   '/api/public/hooks/automation-tick': typeof ApiPublicHooksAutomationTickRoute
@@ -107,6 +116,7 @@ export interface FileRouteTypes {
     | '/automacoes'
     | '/configuracoes'
     | '/execucoes'
+    | '/interesse'
     | '/respostas'
     | '/automacoes/leads'
     | '/api/public/hooks/automation-tick'
@@ -118,6 +128,7 @@ export interface FileRouteTypes {
     | '/automacoes'
     | '/configuracoes'
     | '/execucoes'
+    | '/interesse'
     | '/respostas'
     | '/automacoes/leads'
     | '/api/public/hooks/automation-tick'
@@ -129,6 +140,7 @@ export interface FileRouteTypes {
     | '/automacoes'
     | '/configuracoes'
     | '/execucoes'
+    | '/interesse'
     | '/respostas'
     | '/automacoes_/leads'
     | '/api/public/hooks/automation-tick'
@@ -141,6 +153,7 @@ export interface RootRouteChildren {
   AutomacoesRoute: typeof AutomacoesRoute
   ConfiguracoesRoute: typeof ConfiguracoesRoute
   ExecucoesRoute: typeof ExecucoesRoute
+  InteresseRoute: typeof InteresseRoute
   RespostasRoute: typeof RespostasRoute
   AutomacoesLeadsRoute: typeof AutomacoesLeadsRoute
   ApiPublicHooksAutomationTickRoute: typeof ApiPublicHooksAutomationTickRoute
@@ -176,6 +189,13 @@ declare module '@tanstack/react-router' {
       path: '/execucoes'
       fullPath: '/execucoes'
       preLoaderRoute: typeof ExecucoesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/interesse': {
+      id: '/interesse'
+      path: '/interesse'
+      fullPath: '/interesse'
+      preLoaderRoute: typeof InteresseRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/respostas': {
@@ -221,6 +241,7 @@ const rootRouteChildren: RootRouteChildren = {
   AutomacoesRoute: AutomacoesRoute,
   ConfiguracoesRoute: ConfiguracoesRoute,
   ExecucoesRoute: ExecucoesRoute,
+  InteresseRoute: InteresseRoute,
   RespostasRoute: RespostasRoute,
   AutomacoesLeadsRoute: AutomacoesLeadsRoute,
   ApiPublicHooksAutomationTickRoute: ApiPublicHooksAutomationTickRoute,
